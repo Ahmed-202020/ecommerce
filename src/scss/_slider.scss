@@ -1,0 +1,25 @@
+.ui-slider{
+    margin: 25px 0 15px;
+    height: 2px !important; 
+    .ui-slider-handle{
+        background-color: $brand-primary !important;
+        border: none !important;
+        border-radius: 50%;
+        height: 12px !important;
+        width: 12px !important;
+        top: -6px !important;
+    }
+    .ui-slider-range{
+        border: 1px solid  $brand-primary !important;
+        top: -1.25px !important;
+      }  
+}
+@media(max-width:1199px){
+    .ui-slider .ui-slider-handle {
+        width: 17px !important;
+        height: 17px !important;
+        top: -9px !important;
+    }
+}
+
+

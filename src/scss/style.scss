@@ -1,0 +1,51 @@
+@import "./variables";
+@import "./custom-table";
+@import "./mixins";
+@import "./slider";
+@import "./custom.scss";
+.custom-form-control , .custom-btn{
+    border: 1px solid #ebebeb;
+    border-radius: 2px;
+    font-size: 14px;
+    box-shadow: none;
+    transition: all 0.3s ease;
+    padding: 7px 13px;
+    color: #868686 ;
+}
+
+nav.custom-navbar .container form input.custom-form-control:focus{
+   border-color:$btn-danger-color-dark !important ;
+   box-shadow: 0 0 2px 0 $btn-danger-color-dark !important ;
+}
+.custom-btn:hover{
+    background-color: #d4d4d4;
+    border: 1px solid #8c8c8c;
+    color: $btn-primary-color-dark !important;
+    
+}
+
+.custom-btn-primary{
+   @include button-style($brand-primary);
+}
+
+
+.custom-btn-primary2{
+    color: #000;
+   background-color: $brand-primary !important;
+   border-color: $brand-primary !important;
+    &:hover,
+    &:active,
+    &:focus,
+    &:active:focus,
+    &:active:hover{
+        background-color:$btn-primary-color-dark !important;
+        border-color:$btn-primary-color-dark !important;
+        color: #000;
+    }
+}
+  
+
+.custom-btn-danger{
+    @include button-style($brand-danger );
+}
+    
