@@ -4,21 +4,21 @@ var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
-      entry: './src/index.js',
-      output: {
-        path: path.join(__dirname, 'dist'),
-        publicPath: '/',
-        filename: 'main.js'
-      },
-      mode: 'development',
-      module: {
-        rules: [
+  entry: './src/index.js',
+  output: {
+    path: path.join(__dirname, 'dist'),
+    publicPath: '/',
+    filename: 'main.js'
+  },
+  mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.html$/,
+        use: [
           {
-            test: /\.html$/,
-            use: [
-              {
-                loader: 'html-loader',
-          }           
+            loader: 'html-loader',
+          }
         ]
       },
       {
@@ -28,20 +28,20 @@ module.exports = {
           "css-loader",
           "sass-loader",
         ],
-    },
-    {
-      test: /\.(png|svg|jpe?g|gif)$/i,
-      loader: 'file-loader',
-      options: {
-        name: '[name].[ext]',
-        outputPath: 'images',
       },
-    },
-    {
-      test: /\.(svg|eot|woff|woff2|ttf)$/,
+      {
+        test: /\.(png|svg|jpe?g|gif)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'images',
+        },
+      },
+      {
+        test: /\.(svg|eot|woff|woff2|ttf)$/,
         use: [
           {
-            loader: "file-loader", 
+            loader: "file-loader",
             options: {
               name: '[name].[ext]',
               outputPath: "fonts",
@@ -49,48 +49,49 @@ module.exports = {
             }
           }
         ]
-    },
-    {
-      test: require.resolve("jquery"),
-      loader: "expose-loader",
-      options: {
-        exposes: ["$", "jQuery"],
       },
-    } 
+      {
+        test: require.resolve("jquery"),
+        loader: "expose-loader",
+        options: {
+          exposes: ["$", "jQuery"],
+        },
+      }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template:"./src/index.html",
+      template: "./src/index.html",
     }),
     new HtmlWebpackPlugin({
       filename: "product.html",
-      template:"./src/product.html",
+      template: "./src/product.html",
     }),
     new HtmlWebpackPlugin({
       filename: "checkout.html",
-      template:"./src/checkout.html",
+      template: "./src/checkout.html",
     }),
     new HtmlWebpackPlugin({
       filename: "payment.html",
-      template:"./src/payment.html",
+      template: "./src/payment.html",
     }),
     new HtmlWebpackPlugin({
       filename: "search.html",
-      template:"./src/search.html",
+      template: "./src/search.html",
     }),
     new HtmlWebpackPlugin({
       filename: "contact.html",
-      template:"./src/contact.html",
+      template: "./src/contact.html",
     }),
-    new MiniCssExtractPlugin({filename: "css/style.css"}),
+    new MiniCssExtractPlugin({ filename: "css/style.css" }),
     new OptimizeCssAssetsPlugin({}),
   ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     port: 9000,
-    writeToDisk:true,
-    open:true,
+    writeToDisk: true,
+    stats: 'errors-only',
+    open: true,
   }
 };

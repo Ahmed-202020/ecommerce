@@ -11,7 +11,7 @@
     overflow-x: hidden;
 } */
 body{
-    font-family: 'Almarai' , 'tahoma' , 'vardena';
+    font-family: 'JF Flat Regular' , 'Almarai' , 'tahoma' , 'vardena';
     font-size: 14px;
     color: #555555;
     line-height: 1.429;
@@ -104,7 +104,7 @@ nav ul.navbar-nav a.btn-icon:hover{
     color: #000000 !important;
     background-color: #bfbfbf;
 }
- /* the great product  */
+/* the great product  */
 #carousel-featured{
    background-color: #f7f8f3;
    height: 400px;
@@ -509,9 +509,18 @@ top: 14px;
      padding-bottom: 20px !important;
  }
  .custom-btn-with-icon{
-     font-size: 18px ;
+     font-size: 20px ;
      padding: 5px 10px;
      margin: 15px 0 10px;
+ }
+ .custom-btn-primary2{
+    color: #fff !important;
+    background-color: #f8ad47 !important;
+    border-color: #f8ad47 !important;
+ }
+ .custom-btn-primary2:hover{
+     color: #fff !important;
+     background-color: #b86d07 !important;
  }
  .heading-with-border-bottom{
      border-bottom: 2px solid #ebebeb;
@@ -668,6 +677,8 @@ top: 14px;
     color: #c2c2c2;
    display: inline-block;
    text-align: center;
+   margin-right: 3px;
+   margin-left: 3px;
    transition: all .3s ease;
 }
 .custom-pagination li.active a{
