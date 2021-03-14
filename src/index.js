@@ -13,15 +13,20 @@ import 'normalize.css/normalize.css';
 
 $(function(){
       $('[data-toggle="tooltip"]').tooltip();
+
       $(".add-to-cart-btn").on("click" , function(){
        alert("أضيف المنتج إلي عربة الشراء");
       });
       $("#copyright").text("  جميع الحقوق محفوظة للمتجر سنة " + new Date().getFullYear());
+      
       $('.product-option input[type="radio"]').change(function() {
         $(this).parents(".product-option").siblings().removeClass("active");
         $(this).parents(".product-option").addClass("active");
       });
-    $("[data-product-quantity]").change(function() {
+
+
+
+    $("[data-product-quantity]").on( "change" , function() {
       // عدد المنتجات
       var newQuantity = $(this).val();
       // البحث عن السطر الذي يحتوي على معلومات المنتج
@@ -33,12 +38,21 @@ $(function(){
       parent.find(".total-price-for-product").text(totalPriceForProduct + "$"); 
       calculate();
     });
+
+    $("[data-remove-from-cart]").on("click" , function(){
+      // تحديد السطر المراد حذفه
+      $(this).parents( "[data-product-info]").remove();
+      calculate() ;
+    });
     
     
   function calculate() {
     // انشيء متغير جديد لحفظ السعر الأجمالي
 var totalPriceForAll = 0;
 // لكل سطر يمثل معلومات المنتج في الصفحة   
+if(!$("[data-product-info]").length) {
+  return $("#total-price-for-all").text("0 $");
+}
 $("[data-product-info]").each(function(){
   // سعر القطعة الواحدة فى السطر
 var pricePerUnit = $(this).attr("data-product-price");
@@ -48,16 +62,12 @@ var quantity = $(this).find("[data-product-quantity]").val();
 var totalPriceForProduct = pricePerUnit * quantity;
 // سعر الاجمالي للمنتجات كلها عن طريق السعر الاجمالي للمنتج +سعر المنتجات كلها التى قيمتها الافتراضية =0
 // totalPriceForAll = totalPriceForAll + totalPriceForProduct;
-totalPriceForAll+= totalPriceForProduct;
+totalPriceForAll =   totalPriceForAll + (totalPriceForProduct);
 $("#total-price-for-all").text(totalPriceForAll + "$");
 
 });
   }
-  $("[data-remove-from-cart]").on("click" , function(){
-    // تحديد السطر المراد حذفه
-    $(this).parents("[data-product-info]").remove();
-    calculate() ;
-  });
+  
   var citiesByCountry = {
     sa:["الرياض" , "جدة"],
     eg:["القاهرة" , "الإسكندرية"],
